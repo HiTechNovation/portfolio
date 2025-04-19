@@ -1,6 +1,6 @@
 import { FiDownload } from "react-icons/fi"
 import { motion } from "framer-motion"
-import IMG from "../img/IMG.jpg"
+import IMG from "../assets/IMG.jpg"
 
 function About() {
   return (
@@ -16,7 +16,7 @@ function About() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            viewport={{  amount: 0.3 }}
+            viewport={{ once:true, amount: 0.3 }}
             className="relative aspect-square max-w-md mx-auto"
           >
             <div className="absolute inset-0 border-2 border-blue-600 translate-x-4 translate-y-4 rounded-lg"></div>
@@ -69,7 +69,7 @@ function About() {
             </div>
 
             <a
-              href="#resume"
+              href="https://drive.google.com/uc?export=download&id=1O7Gr5kwpJEqpn-jUkfJqJHWFNs0Bl22U"
               className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors inline-flex items-center gap-2"
             >
               <FiDownload className="h-5 w-5" />

@@ -1,6 +1,8 @@
 "use client"
 
 import { useEffect, useState, useRef } from "react"
+import { HiBriefcase } from "react-icons/hi"
+import { IoSchool } from "react-icons/io5"
 
 function Experience() {
   const [isVisible, setIsVisible] = useState(false)
@@ -30,41 +32,34 @@ function Experience() {
 
   const workExperience = [
     {
-      title: "Senior Full Stack Developer",
-      company: "Tech Innovations Inc.",
-      period: "2021 - Present",
+      title: "MERN Stack Developer & UI Enthusiast",
+      company: "Personal & Open Source Projects",
+      period: "Present",
       description:
-        "Lead developer for multiple web applications using React and Node.js. Implemented CI/CD pipelines, mentored junior developers, and optimized application performance.",
+        "Building full-stack applications using MongoDB, Express.js, React, and Node.js. Focused on clean UI/UX using TailwindCSS and building clones of real-world applications like Flipkart, BookStore, and weather apps.",
     },
     {
-      title: "Full Stack Developer",
-      company: "Digital Solutions LLC",
-      period: "2019 - 2021",
+      title: "MERN Stack Developer Intern:",
+      company: "Skilled-up (NB Plaza, Sector 1, Greater Noida West, UP ).",
+      period: "2024 - 2025",
       description:
-        "Developed and maintained web applications for clients across various industries. Collaborated with design and product teams to deliver high-quality solutions.",
-    },
-    {
-      title: "Frontend Developer",
-      company: "WebCraft Studios",
-      period: "2017 - 2019",
-      description:
-        "Created responsive user interfaces using React.js. Worked closely with backend developers to integrate APIs and ensure seamless user experiences.",
-    },
+"      Collaborated with a team to build and deploy responsive, scalable applications."    },
   ]
 
   const education = [
     {
-      degree: "Master of Computer Science",
-      institution: "Tech University",
-      period: "2015 - 2017",
-      description: "Specialized in Web Technologies and Software Engineering. Graduated with honors.",
+      degree: "Master in computer applications (MCA)",
+      institution: "Dr. A.P.J. Abdul Kalam Technical University Lucknow (UP, India)",
+      period: "2022-2024",
+      description:
+        "Diving deep into Node.js, Express, MongoDB, and React. Learning production standards, optimization, and interview-level knowledge.",
     },
     {
-      degree: "Bachelor of Computer Science",
-      institution: "State University",
-      period: "2011 - 2015",
+      degree: "O Level",
+      institution: "National Institute of Electronics & Information Technology (New Delhi)" ,
+      period: "2021-2022",
       description:
-        "Focused on programming fundamentals, data structures, and algorithms. Participated in multiple hackathons and coding competitions.",
+        "Learned programming fundamentals, data structures, and participated in competitive programming and software development projects.",
     },
   ]
 
@@ -80,20 +75,7 @@ function Experience() {
           {/* Work Experience */}
           <div>
             <div className="flex items-center mb-8">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="text-blue-600 mr-3 h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
+              <HiBriefcase className="text-blue-600 mr-3 h-6 w-6" />
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Work Experience</h3>
             </div>
 
@@ -123,22 +105,7 @@ function Experience() {
           {/* Education */}
           <div>
             <div className="flex items-center mb-8">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="text-blue-600 mr-3 h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-                />
-              </svg>
+              <IoSchool className="text-blue-600 mr-3 h-6 w-6" />
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Education</h3>
             </div>
 

@@ -71,8 +71,8 @@ function Hero() {
             </a>
 
             <a
-              href="https://wa.me/918006869258"
-              target="_blank"
+  href={`https://wa.me/+918006869258?text=${encodeURIComponent("Hello, I would like to know more about your services.")}`}
+  target="_blank"
               rel="noopener noreferrer"
               className="text-gray-700 dark:text-gray-300 hover:text-green-500 dark:hover:text-green-400 transition-colors"
             >
@@ -82,6 +82,7 @@ function Hero() {
           </div>
         </div>
       </div>
+      
 
       {/* Background decoration */}
       <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-3xl"></div>

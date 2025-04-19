@@ -129,6 +129,7 @@ function Contact() {
                   <input
                     type="text"
                     name="name"
+                    placeholder="Enter your name"
                     value={formData.name}
                     onChange={handleChange}
                     className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
@@ -140,6 +141,7 @@ function Contact() {
                   <input
                     type="email"
                     name="email"
+                    placeholder="Enter your email"
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
@@ -152,6 +154,7 @@ function Contact() {
                 <input
                   type="text"
                   name="subject"
+                  placeholder="Enter subject"
                   value={formData.subject}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
@@ -162,6 +165,7 @@ function Contact() {
                 <label className="block mb-2 font-medium text-gray-900 dark:text-white">Message</label>
                 <textarea
                   name="message"
+                  placeholder="Write your message here..."
                   rows="6"
                   value={formData.message}
                   onChange={handleChange}
