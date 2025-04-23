@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from "react"
+import { useState } from "react"
 import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md"
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa"
 import { FiSend } from "react-icons/fi"
+import { motion } from "framer-motion"
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -10,26 +11,6 @@ function Contact() {
     subject: "",
     message: "",
   })
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.unobserve(entry.target)
-        }
-      },
-      { threshold: 0.1 },
-    )
-
-    if (sectionRef.current) observer.observe(sectionRef.current)
-
-    return () => {
-      if (sectionRef.current) observer.unobserve(sectionRef.current)
-    }
-  }, [])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -70,7 +51,7 @@ function Contact() {
   ]
 
   return (
-    <section id="contact" ref={sectionRef} className="py-20 bg-gray-100 dark:bg-gray-800">
+    <section id="contact" className="py-20 bg-gray-100 dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">Get In Touch</h2>
@@ -82,7 +63,13 @@ function Contact() {
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Contact Info */}
-          <div className={`lg:col-span-1 transform transition-all duration-500 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="lg:col-span-1"
+          >
             <div className="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 h-full">
               <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Contact Information</h3>
 
@@ -118,69 +105,74 @@ function Contact() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <form onSubmit={handleSubmit} className={`bg-white dark:bg-gray-900 p-8 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 transform transition-all duration-500 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label className="block mb-2 font-medium text-gray-900 dark:text-white">Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Enter your name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block mb-2 font-medium text-gray-900 dark:text-white">Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Enter your email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="mb-6">
-                <label className="block mb-2 font-medium text-gray-900 dark:text-white">Subject</label>
+          <motion.form
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="lg:col-span-2 bg-white dark:bg-gray-900 p-8 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700"
+          >
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label className="block mb-2 font-medium text-gray-900 dark:text-white">Name</label>
                 <input
                   type="text"
-                  name="subject"
-                  placeholder="Enter subject"
-                  value={formData.subject}
+                  name="name"
+                  placeholder="Enter your name"
+                  value={formData.name}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
                   required
                 />
               </div>
-              <div className="mb-6">
-                <label className="block mb-2 font-medium text-gray-900 dark:text-white">Message</label>
-                <textarea
-                  name="message"
-                  placeholder="Write your message here..."
-                  rows="6"
-                  value={formData.message}
+              <div>
+                <label className="block mb-2 font-medium text-gray-900 dark:text-white">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={formData.email}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
                   required
-                ></textarea>
+                />
               </div>
-              <button
-                type="submit"
-                className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors flex gap-2"
-              >
-                Send Message <FiSend className="w-4 h-4 mt-1.5" />
-              </button>
-            </form>
-          </div>
+            </div>
+            <div className="mb-6">
+              <label className="block mb-2 font-medium text-gray-900 dark:text-white">Subject</label>
+              <input
+                type="text"
+                name="subject"
+                placeholder="Enter subject"
+                value={formData.subject}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                required
+              />
+            </div>
+            <div className="mb-6">
+              <label className="block mb-2 font-medium text-gray-900 dark:text-white">Message</label>
+              <textarea
+                name="message"
+                placeholder="Write your message here..."
+                rows="6"
+                value={formData.message}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                required
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors flex gap-2"
+            >
+              Send Message <FiSend className="w-4 h-4 mt-1.5" />
+            </button>
+          </motion.form>
         </div>
       </div>
     </section>

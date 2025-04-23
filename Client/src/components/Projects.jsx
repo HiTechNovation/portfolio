@@ -1,34 +1,13 @@
-import { useState, useEffect, useRef } from "react"
+import { useState } from "react"
 import { FaGithub } from "react-icons/fa"
 import { FiExternalLink, FiArrowRight } from "react-icons/fi"
+import { motion } from "framer-motion"
 import portfolioImg from "../assets/portfolio.png"
+import hitechnovation from "../assets/HiTechNovation.png"
+
 
 function Projects() {
   const [filter, setFilter] = useState("all")
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.unobserve(entry.target)
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
-    }
-  }, [])
 
   const projects = [
     {
@@ -45,14 +24,14 @@ function Projects() {
     },
     {
       id: 2,
-      title: "Task Management App",
+      title: "HitechNovation- A digital Marketing Agency",
       description:
-        "A collaborative task management application with real-time updates, user roles, and project organization features.",
-      image: "/placeholder.svg?height=600&width=800",
-      technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
-      category: "fullstack",
-      github: "https://github.com",
-      demo: "https://example.com",
+        "A sleek, responsive website for a digital marketing agency, highlighting services like SEO, social media, and content marketing. Designed for conversion and brand impact. task management application with real-time updates, user roles, and project organization features.",
+      image: hitechnovation,
+      technologies: ["React", "Framer Motion", "Tailwind CSS"],
+      category: "frontend",
+      github: "https://github.com/HiTechNovation/HiTechNovation",
+      demo: "https://hitechnovation.netlify.app",
     },
     {
       id: 3,
@@ -67,18 +46,18 @@ function Projects() {
     },
     {
       id: 4,
-      title: "Weather Dashboard",
+      title: "V_Weather Application",
       description:
         "A weather application that provides real-time weather data and forecasts for locations worldwide.",
-      image: "/placeholder.svg?height=600&width=800",
-      technologies: ["React", "OpenWeather API", "Chart.js"],
+      image: "https://miro.medium.com/v2/resize:fit:750/format:webp/1*KYrYFzjUUlKSZlgFDzEEDg.png",
+      technologies: ["React", "OpenWeather API", "Tailwind CSS"],
       category: "frontend",
-      github: "https://github.com",
-      demo: "https://example.com",
+      github: "https://github.com/HiTechNovation/v_weather",
+      demo: "https://hitechnovation.github.io/v_weather/",
     },
     {
       id: 5,
-      title: "RESTful API Service",
+      title: "RESTful API Service (Upcoming)",
       description:
         "A comprehensive RESTful API service for a blog platform with authentication, authorization, and CRUD operations.",
       image: "/placeholder.svg?height=600&width=800",
@@ -89,7 +68,7 @@ function Projects() {
     },
     {
       id: 6,
-      title: "Real-time Chat Application",
+      title: "Real-time Chat Application (Upcoming)",
       description:
         "A real-time chat application with private messaging, group chats, and file sharing capabilities.",
       image: "/placeholder.svg?height=600&width=800",
@@ -104,7 +83,7 @@ function Projects() {
     filter === "all" ? projects : projects.filter((project) => project.category === filter)
 
   return (
-    <section id="projects" ref={sectionRef} className="py-20 bg-gray-100 dark:bg-gray-800">
+    <section id="projects" className="py-20 bg-gray-100 dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">My Projects</h2>
@@ -135,12 +114,13 @@ function Projects() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
-            <div
+            <motion.div
               key={project.id}
-              className={`bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-500 border border-gray-200 dark:border-gray-700 h-full flex flex-col ${
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-              }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-500 border border-gray-200 dark:border-gray-700 h-full flex flex-col"
             >
               <div className="relative h-48 overflow-hidden">
                 <img
@@ -185,7 +165,7 @@ function Projects() {
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

@@ -13,10 +13,10 @@ function About() {
 
         <div className="grid md:grid-cols-2 gap-12 items-center overflow-x-hidden">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once:true, amount: 0.3 }}
+     initial={{ opacity: 0, x: 20 }}
+     whileInView={{ opacity: 1, x: 0 }}
+     transition={{ duration: 1.5 }}
+     viewport={{ once: true, amount: 0.3}}
             className="relative aspect-square max-w-md mx-auto"
           >
             <div className="absolute inset-0 border-2 border-blue-600 translate-x-4 translate-y-4 rounded-lg"></div>

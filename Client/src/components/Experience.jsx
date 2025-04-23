@@ -1,35 +1,10 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { motion } from "framer-motion"
 import { HiBriefcase } from "react-icons/hi"
 import { IoSchool } from "react-icons/io5"
 
 function Experience() {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.unobserve(entry.target)
-        }
-      },
-      { threshold: 0.1 },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
-    }
-  }, [])
-
   const workExperience = [
     {
       title: "MERN Stack Developer & UI Enthusiast",
@@ -43,7 +18,8 @@ function Experience() {
       company: "Skilled-up (NB Plaza, Sector 1, Greater Noida West, UP ).",
       period: "2024 - 2025",
       description:
-"      Collaborated with a team to build and deploy responsive, scalable applications."    },
+        "Collaborated with a team to build and deploy responsive, scalable applications.",
+    },
   ]
 
   const education = [
@@ -56,7 +32,7 @@ function Experience() {
     },
     {
       degree: "O Level",
-      institution: "National Institute of Electronics & Information Technology (New Delhi)" ,
+      institution: "National Institute of Electronics & Information Technology (New Delhi)",
       period: "2021-2022",
       description:
         "Learned programming fundamentals, data structures, and participated in competitive programming and software development projects.",
@@ -64,7 +40,7 @@ function Experience() {
   ]
 
   return (
-    <section id="experience" ref={sectionRef} className="py-20 bg-white dark:bg-gray-900">
+    <section id="experience" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">Experience & Education</h2>
@@ -81,12 +57,13 @@ function Experience() {
 
             <div className="relative border-l-2 border-blue-600/30 pl-8 ml-3">
               {workExperience.map((job, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className={`mb-12 relative transform transition-all duration-500 ${
-                    isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                  }`}
-                  style={{ transitionDelay: `${index * 200}ms` }}
+                  initial={{ opacity: 0, x: -100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  className="mb-12 relative"
                 >
                   <div className="absolute w-4 h-4 bg-blue-600 rounded-full -left-[2.55rem] top-1.5 border-4 border-white dark:border-gray-900"></div>
                   <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
@@ -97,7 +74,7 @@ function Experience() {
                     </div>
                     <p className="text-gray-600 dark:text-gray-400">{job.description}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -111,12 +88,13 @@ function Experience() {
 
             <div className="relative border-l-2 border-blue-600/30 pl-8 ml-3">
               {education.map((edu, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className={`mb-12 relative transform transition-all duration-500 ${
-                    isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                  }`}
-                  style={{ transitionDelay: `${(index + 3) * 200}ms` }}
+                  initial={{ opacity: 0, x: -100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: (index + workExperience.length) * 0.2 }}
+                  viewport={{ once: true }}
+                  className="mb-12 relative"
                 >
                   <div className="absolute w-4 h-4 bg-blue-600 rounded-full -left-[2.55rem] top-1.5 border-4 border-white dark:border-gray-900"></div>
                   <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
@@ -127,7 +105,7 @@ function Experience() {
                     </div>
                     <p className="text-gray-600 dark:text-gray-400">{edu.description}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
