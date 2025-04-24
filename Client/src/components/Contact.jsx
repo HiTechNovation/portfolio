@@ -123,7 +123,7 @@ function Contact() {
             </div>
           </motion.div>
 
-          {/* Contact Form */}
+          
           <motion.form
             name="contact"
             method="POST"
