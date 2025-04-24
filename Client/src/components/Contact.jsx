@@ -196,7 +196,7 @@ function Contact() {
         </div>
       </div>
 
-      {/* Hidden form for Netlify detection */}
+      
       <form name="contact" netlify hidden>
         <input type="text" name="name" />
         <input type="email" name="email" />
